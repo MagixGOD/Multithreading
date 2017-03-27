@@ -8,21 +8,31 @@ namespace ConsoleApplication2
 {
     class SumAgent : Agent
     {
-        protected int Sum;
+        public double Sum;
         private int zakres;
         private static int ID;
+        Program program = new Program();
+        private static List<int> SumList = new List<int>();
+        private static List<int> RandomList = new List<int>();
+
+        public void GetList()
+        {
+            RandomList = program.GetList();
+        }
         public SumAgent(int range)
         {
             id++;
             ID = id;
             zakres = range;
+            HasFinished = false;
+            GetList();
         }
         public override void Update()
         {
-            while (!HasFinished)
-            {
-
-            }
+                SumList = RandomList.GetRange(zakres - 1000/Program.AgentCount, zakres);
+                Sum = SumList.Sum();
+                Console.WriteLine("Sum: " + Sum);
+                HasFinished = true;
         }
     }
 }

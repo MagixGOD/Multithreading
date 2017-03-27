@@ -9,23 +9,27 @@ namespace ConsoleApplication2
 {
     class Program
     {
-        private static int AgentCount = 30;
+        public static int AgentCount = 30;
         private static Random random = new Random();
         private static List<IEnumerator<float>> Lista = new List<IEnumerator<float>>();
         private static List<IRunnable> Agents = new List<IRunnable>();
         private static List<int> RandomList = new List<int>();
 
+        public List<int> GetList()
+        {
+            return RandomList;
+        }
         static void GenerateRunnables()
         {
-              for (int a = 1; a <= AgentCount; a++)
-              {
-                  Agents.Add(new SumAgent((1000/AgentCount)*a));
-              }
+            for (int a = 0; a < 1000; a++)
+            {
+                RandomList.Add(random.Next(0, 1000));
+            }
 
-              for (int a = 0; a < 1000; a++)
-              {
-                  RandomList.Add(random.Next(0, 1000));
-              }
+            for (int a = 1; a <= AgentCount; a++)
+            {
+                Agents.Add(new SumAgent((1000 / AgentCount) * a));
+            }
 
             /*  for (int a = 0; a < AgentCount/3; a++)
                          {
@@ -68,7 +72,8 @@ namespace ConsoleApplication2
         {
             Program.GenerateRunnables();
             Program.RunThreads();
-            Program.RunFibers();
+            // Program.RunFibers();
+
             Console.ReadKey();
         }
     }
