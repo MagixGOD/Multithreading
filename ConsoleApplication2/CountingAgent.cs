@@ -9,21 +9,22 @@ namespace ConsoleApplication2
 {
     class CountingAgent : Agent
     {
-        private int ID
+        private int ID;
+        private int count = 0;
         public CountingAgent()
         {
-            id++; 
+            id++;
             ID = id;
             HasFinished = false;
         }
         public override void Update()
         {
-            for (int i = 0; i < id / 3 + 1; i++)
+            if (count == ID)
             {
-                Console.WriteLine("Wykonuje wątek " + i);
-                Thread.Sleep(100);
+                Console.WriteLine("CountingAgent ID: " + ID);
+                HasFinished = true;
             }
-            Console.WriteLine("CountingAgent ID: " + id / 3);
+            else count++;
         }
 
     }

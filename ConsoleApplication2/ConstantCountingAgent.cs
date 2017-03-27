@@ -10,5 +10,22 @@ namespace ConsoleApplication2
     {
         private int ID;
         private int count = 0;
+
+        public ConstantCountingAgent()
+        {
+            id++;
+            ID = id;
+            HasFinished = false;
+        }
+        public override void Update()
+        {
+            if (count == 10)
+            {
+                Console.WriteLine("ConstantCountingAgent ID: {0}", ID);
+                HasFinished = true;
+            }
+            else count++;
+        }
     }
 }
+

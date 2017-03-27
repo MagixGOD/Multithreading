@@ -11,6 +11,7 @@ namespace ConsoleApplication2
         private int ID;
         private int count = 0;
         private double SinValue;
+
         public SineGeneratingAgent()
         {
             id++;
