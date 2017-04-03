@@ -25,13 +25,14 @@ namespace ConsoleApplication2
         }
         public override void Update()
         {
-            while (SumAgents.All(a => a.HasFinished))
+            if (SumAgents.All(a => a.HasFinished))
             {
                 foreach (SumAgent SumAgent in SumAgents)
                 {
                     Sum += SumAgent.Sum;
                 }
                 Console.WriteLine("Sum of all:" + Sum);
+                HasFinished = true;
             }
         }
     }
