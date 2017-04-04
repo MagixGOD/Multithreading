@@ -34,8 +34,8 @@ namespace ConsoleApplication2
             for (int a = 1; a <= AgentCount; a++)
             {
                 Agents.Add(new SumAgent(((1000 / AgentCount) * a) - 1));
-                SumSupervizors.Add(new SumSupervizor());
             }
+            SumSupervizors.Add(new SumSupervizor());
 
             /*   for (int a = 0; a < AgentCount/3; a++)
                           {
@@ -52,12 +52,12 @@ namespace ConsoleApplication2
             foreach (Agent Agent in Agents)
             {
                 Threads.Add(new Thread(Agent.Run));
-                Console.WriteLine();
+                Console.WriteLine("SumAgent added.");
             }
             foreach (SumSupervizor Sumsupervizor in SumSupervizors)
             {
                 Threads.Add(new Thread(Sumsupervizor.Run));
-                Console.WriteLine();
+                Console.WriteLine("SumSupervizor added.");
             }
             foreach (Thread Thread in Threads)
             {
